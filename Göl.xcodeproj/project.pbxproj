@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C586244F85C8FF8E3F7FF92 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17F8A149089B89C315D74E61 /* Pods.framework */; };
 		EF7C0E241BD34E3000293E6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C0E231BD34E3000293E6F /* AppDelegate.swift */; };
 		EF7C0E261BD34E3000293E6F /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C0E251BD34E3000293E6F /* MasterViewController.swift */; };
 		EF7C0E281BD34E3000293E6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7C0E271BD34E3000293E6F /* DetailViewController.swift */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14E8CFD1853BF0317549E293 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		17F8A149089B89C315D74E61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EED5FF8DFBF4950800DA91AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EF7C0E1E1BD34E3000293E6F /* Göl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Göl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7C0E221BD34E3000293E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF7C0E231BD34E3000293E6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C586244F85C8FF8E3F7FF92 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +63,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A59A6B20CFD863FB200228B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14E8CFD1853BF0317549E293 /* Pods.debug.xcconfig */,
+				EED5FF8DFBF4950800DA91AA /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7944AB8AE1D1292D81057C79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17F8A149089B89C315D74E61 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EF7C0E151BD34E2E00293E6F = {
 			isa = PBXGroup;
 			children = (
 				EF7C0E201BD34E3000293E6F /* Göl */,
 				EF7C0E381BD34E3100293E6F /* GölTests */,
 				EF7C0E1F1BD34E3000293E6F /* Products */,
+				5A59A6B20CFD863FB200228B /* Pods */,
+				7944AB8AE1D1292D81057C79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,9 +146,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF7C0E3F1BD34E3100293E6F /* Build configuration list for PBXNativeTarget "Göl" */;
 			buildPhases = (
+				B70D44FAD590A50F931DA975 /* Check Pods Manifest.lock */,
 				EF7C0E1A1BD34E2F00293E6F /* Sources */,
 				EF7C0E1B1BD34E2F00293E6F /* Frameworks */,
 				EF7C0E1C1BD34E2F00293E6F /* Resources */,
+				6DFBCD8104A4CC4473011AA4 /* Embed Pods Frameworks */,
+				E7EA6F861F1C5CCA69302562 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +236,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6DFBCD8104A4CC4473011AA4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B70D44FAD590A50F931DA975 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E7EA6F861F1C5CCA69302562 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF7C0E1A1BD34E2F00293E6F /* Sources */ = {
@@ -344,6 +419,7 @@
 		};
 		EF7C0E401BD34E3100293E6F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14E8CFD1853BF0317549E293 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Göl/Info.plist";
@@ -354,6 +430,7 @@
 		};
 		EF7C0E411BD34E3100293E6F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EED5FF8DFBF4950800DA91AA /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Göl/Info.plist";
@@ -415,6 +492,7 @@
 				EF7C0E411BD34E3100293E6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF7C0E421BD34E3100293E6F /* Build configuration list for PBXNativeTarget "GölTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +501,7 @@
 				EF7C0E441BD34E3100293E6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
