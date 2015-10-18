@@ -15,7 +15,7 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
-    var leagueArray = [League]()
+    var leagueArray: [League] = []
 
 
     override func awakeFromNib() {
@@ -41,10 +41,11 @@ class MasterViewController: UITableViewController {
             .responseJSON { response in
                 if let json = response.result.value {
                     NSLog("Succeeded fetching from network")
-                    var json = JSON(json)
+                    let json = JSON(json)
                     for (key,SubJson):(String, JSON) in json {
-                        self.leagueArray[Int(key)!] = League(json: SubJson)
+                        self.leagueArray.append(League(json: SubJson))
                     }
+                    self.tableView.reloadData()
                 
                 } } }
 
@@ -87,8 +88,9 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
 
         //let object = objects[indexPath.row] as! NSDate
-        let object = leagueArray[indexPath.row] as! League
+        let object = leagueArray[indexPath.row]
         //cell.textLabel!.text = object.description
+        cell.imageView!.image = UIImage(named: object.country)
         cell.textLabel!.text = object.caption
         return cell
     }
@@ -118,7 +120,7 @@ class League: AnyObject {
     var teams = [Team]()
     
     init(json: JSON) {
-        let caption = json["caption"].string
+        caption = json["caption"].string
         if caption!.rangeOfString("Bundesliga") != nil {
             country = "Germany"
         }
@@ -141,7 +143,10 @@ class League: AnyObject {
             country = "Netherlands"
         }
         else if caption!.rangeOfString("Champions League") != nil {
-            country = "Europe"
+            country = "European-Union"
+        }
+        else {
+            country = "Unknown"
         }
     }
 }
